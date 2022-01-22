@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { View, Button, TextInput } from 'react-native'
+import style from './style';
 
-const ToDoForm = ({ addTask }) => {
+const ToDoForm = ({ addTask,  handleFilter}) => {
     const [ userInput, setUserInput ] = useState('')
     
     const handleChange = (e) => {
@@ -14,10 +16,16 @@ const ToDoForm = ({ addTask }) => {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input value={userInput} type="text" onChange={handleChange} placeholder="Endter task..." />
-            <button>Summit</button>
-        </form>
+        <>
+            <View style={ style.searchInput }>
+                <TextInput value={userInput} type="text" onChange={handleChange} placeholder="Endter task..." />
+                <Button title='Submit' onPress={handleSubmit} />
+                <View style={{ marginLeft: 10 }}>
+                <Button title='Clear Complete' onPress={handleFilter} />
+                </View>
+            </View>
+        </>
+        
     )
 }
 

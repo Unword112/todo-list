@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
+import { View } from 'react-native'
+
 import './App.css';
+import style from './style';
 
 //Data
 import data from './data.json'
@@ -33,11 +36,19 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Header />
-      <ToDoList toDoList={toDoList} handleToggle={handleToggle} handleFilter={handleFilter}/>
-      <ToDoForm addTask={addTask} />
-    </div>
+    <>
+      <View style={style.header}>
+        <Header />
+      </View>
+      
+      <View>
+        <ToDoForm addTask={addTask} />
+      </View>
+
+      <View className="App" style={style.container}>
+        <ToDoList toDoList={toDoList} handleToggle={handleToggle} handleFilter={handleFilter}/>
+      </View>
+    </>
   );
 }
 
